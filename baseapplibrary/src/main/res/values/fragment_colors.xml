@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_primary"></color>
+    <color name="pink_divider"></color>
+    <color name="blue_secondary_text"></color><!--二级字体-->
+
+</resources>

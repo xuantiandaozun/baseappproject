@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RS.AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+    </style>
+    <style name="BlueTheme" parent="RS.AppTheme.Base">
+        <!-- Customize your theme here. -->
+
+        <item name="primary">@color/blue_primary</item>
+        <item name="t_divider">@color/pink_divider</item>
+        <item name="secondary_text">@color/blue_secondary_text</item>
+
+    </style>
+</resources>
