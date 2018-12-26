@@ -1,0 +1,54 @@
+<resources>
+    <!--<dimen name="material_font_12">14sp</dimen>-->
+    <!--<dimen name="material_font_14">16sp</dimen>-->
+    <!--<dimen name="material_font_16">18sp</dimen>-->
+    <dimen name="material_font_10">10sp</dimen>
+    <dimen name="material_font_11">11sp</dimen>
+    <dimen name="material_font_12">12sp</dimen>
+    <dimen name="material_font_14">14sp</dimen>
+    <dimen name="material_font_16">16sp</dimen>
+    <dimen name="material_font_18">18sp</dimen>
+    <dimen name="material_font_20">20sp</dimen>
+    <dimen name="material_font_22">22sp</dimen>
+    <dimen name="material_font_24">24sp</dimen>
+    <dimen name="material_font_30">30sp</dimen>
+    <dimen name="material_font_40">40sp</dimen>
+    <dimen name="material_font_50">50sp</dimen>
+    <dimen name="material_font_60">60sp</dimen>
+    <dimen name="material_300">300dp</dimen>
+    <dimen name="material_240">240dp</dimen>
+    <dimen name="material_260">260dp</dimen>
+    <dimen name="material_220">220dp</dimen>
+    <dimen name="material_200">200dp</dimen>
+    <dimen name="material_160">160dp</dimen>
+    <dimen name="material_140">140dp</dimen>
+
+    <dimen name="material_120">120dp</dimen>
+    <dimen name="material_110">110dp</dimen>
+    <dimen name="material_100">100dp</dimen>
+    <dimen name="material_48">48dp</dimen>
+    <dimen name="material_52">52dp</dimen>
+    <dimen name="material_56">56dp</dimen>
+    <dimen name="material_59">59dp</dimen>
+    <dimen name="material_72">72dp</dimen>
+    <dimen name="material_65">65dp</dimen>
+    <dimen name="material_88">88dp</dimen>
+    <dimen name="material_95">95dp</dimen>
+    <dimen name="material_80">80dp</dimen>
+    <dimen name="material_16">16dp</dimen>
+    <dimen name="material_40">40dp</dimen>
+    <dimen name="material_36">36dp</dimen>
+    <dimen name="material_30">30dp</dimen>
+    <dimen name="material_25">25dp</dimen>
+    <dimen name="material_24">24dp</dimen>
+    <dimen name="material_20">20dp</dimen>
+    <dimen name="material_12">12dp</dimen>
+    <dimen name="material_10">10dp</dimen>
+    <dimen name="material_5">5dp</dimen>
+    <dimen name="material_8">8dp</dimen>
+    <dimen name="material_4">4dp</dimen>
+    <dimen name="material_2">2dp</dimen>
+    <dimen name="material_1">1dp</dimen>
+
+    <dimen name="material_divider_1">1px</dimen>
+</resources>
