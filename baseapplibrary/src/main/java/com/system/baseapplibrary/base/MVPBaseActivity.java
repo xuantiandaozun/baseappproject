@@ -34,7 +34,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * 创建时间：2018/4/2
  */
 
-public abstract class MVPBaseActivity <V, P extends MVPBasePresenter> extends SupportActivity implements MVPBaseView{
+public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends SupportActivity implements MVPBaseView{
     protected P mPresenter;
     public String mtoken;
     public String mUser;

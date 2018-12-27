@@ -32,7 +32,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * 创建时间：2018/4/2
  */
 
-public abstract class MVPBaseFragment<V,P extends MVPBasePresenter> extends SupportFragment implements MVPBaseView {
+public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends SupportFragment implements MVPBaseView {
     /*分页相关*/
     /* 每页最大分页数量 */
     public int mPageSize = 20;
