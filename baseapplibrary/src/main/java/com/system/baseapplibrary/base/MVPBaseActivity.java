@@ -1,5 +1,6 @@
 package com.system.baseapplibrary.base;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.google.gson.reflect.TypeToken;
 import com.system.baseapplibrary.BaseConfig;
 import com.system.baseapplibrary.bean.EventCallBackBean;
 import com.system.baseapplibrary.utils.AppManager;
+import com.system.baseapplibrary.utils.LiveEventBus;
 import com.system.baseapplibrary.utils.SPUtils;
 
 
@@ -64,6 +66,18 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         initInfo();
         initDatas();
         AppManager.addActivity(this);
+        LiveEventBus.get()
+                .with("base_activity", String.class)
+                .observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String s) {
+                        switch (s){
+                            case "initInfo":
+                                initInfo();
+                                break;
+                        }
+                    }
+                });
     }
 
     /**
