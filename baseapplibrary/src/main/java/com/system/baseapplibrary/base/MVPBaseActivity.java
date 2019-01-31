@@ -36,7 +36,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * 创建时间：2018/4/2
  */
 
-public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends SupportActivity implements MVPBaseView{
+public abstract class MVPBaseActivity<P extends MVPBasePresenter> extends SupportActivity implements MVPBaseView {
     protected P mPresenter;
     public String mtoken;
     public String mUser;
@@ -60,7 +60,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         //填充View
         if (mPresenter != null) {
             mPresenter.attachView(this);
-            buildPresenter=new ArrayList<>();
+            buildPresenter = new ArrayList<>();
 
         }
         initInfo();
@@ -71,7 +71,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
                 .observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(@Nullable String s) {
-                        switch (s){
+                        switch (s) {
                             case "initInfo":
                                 initInfo();
                                 break;
@@ -85,17 +85,14 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
      */
     private void initInfo() {
         String token = BaseConfig.getToken(getThisContext());
-        if(!TextUtils.isEmpty(token)){
-            mtoken=token;
-        }
+        mtoken = token;
+
         String user = (String) SPUtils.get(getThisContext(), BaseConfig.USER, "");
-        if(!TextUtils.isEmpty(user)){
-            mUser=user;
-        }
+        mUser = user;
+
         String userid = (String) SPUtils.get(getThisContext(), BaseConfig.USERID, "");
-        if(!TextUtils.isEmpty(userid)){
-            mUserId=userid;
-        }
+        mUserId = userid;
+
     }
 
     @Override
@@ -109,7 +106,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
                 while (iterator.hasNext()) {
                     String next = iterator.next();
                     Object object = eventData.get(next);
-                    refreshData(next,object);
+                    refreshData(next, object);
                 }
                 break;
             case EventCallBackBean.CLOSE:
@@ -119,18 +116,20 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
                 while (iterator.hasNext()) {
                     String next = iterator.next();
                     Object object = eventData.get(next);
-                    withData(next,object);
+                    withData(next, object);
                 }
                 break;
             default:
                 break;
         }
     }
+
     /**
      * 建造presenter对象
+     *
      * @param presenter
      */
-    protected   void buildPresenter(MVPBasePresenter presenter){
+    protected void buildPresenter(MVPBasePresenter presenter) {
         presenter.attachView(this);
         buildPresenter.add(presenter);
     }
@@ -141,17 +140,21 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
      * @return
      */
     protected abstract void refreshData(String key, Object object);
+
     /**
      * 加载数据
      *
      * @return
      */
     protected abstract void withData(String key, Object object);
+
     /**
      * 创建presenter
+     *
      * @return
      */
     protected abstract P createPresenter();
+
     /**
      * 设置主题
      *
@@ -178,9 +181,10 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
 
     /**
      * 获取当前Context
+     *
      * @return
      */
-    public Context getThisContext(){
+    public Context getThisContext() {
         return this;
     }
 
@@ -201,6 +205,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         }
         return null;
     }
+
     /**
      * 根据String获取参数
      *
@@ -216,6 +221,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         HashMap<String, Object> filter = new Gson().fromJson(params, type);
         return filter;
     }
+
     /**
      * 跳转到指定页面
      *
@@ -240,6 +246,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         }
         startActivity(intent);
     }
+
     /**
      * 关闭Activity
      */
@@ -247,17 +254,18 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
         finish();
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mPresenter != null) {
             mPresenter.detachView();
-            if(buildPresenter!=null&&buildPresenter.size()!=0){
-                for (int i=0;i<buildPresenter.size();i++){
+            if (buildPresenter != null && buildPresenter.size() != 0) {
+                for (int i = 0; i < buildPresenter.size(); i++) {
                     MVPBasePresenter mvpBasePresenter = buildPresenter.get(i);
                     mvpBasePresenter.detachView();
                 }
-                buildPresenter=null;
+                buildPresenter = null;
             }
         }
 

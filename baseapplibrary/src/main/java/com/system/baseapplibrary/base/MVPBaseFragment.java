@@ -60,7 +60,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
         mPresenter = createPresenter();
         if (mPresenter != null) {
             mPresenter.attachView(this);
-            buildPresenter=new ArrayList<>();
+            buildPresenter = new ArrayList<>();
         }
         initInfo();
         LiveEventBus.get()
@@ -68,7 +68,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
                 .observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(@Nullable String s) {
-                        switch (s){
+                        switch (s) {
                             case "initInfo":
                                 initInfo();
                                 break;
@@ -82,17 +82,17 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
      */
     private void initInfo() {
         String token = BaseConfig.getToken(getContext());
-        if(!TextUtils.isEmpty(token)){
-            mtoken=token;
-        }
+
+        mtoken = token;
+
         String user = (String) SPUtils.get(getThisContext(), BaseConfig.USER, "");
-        if(!TextUtils.isEmpty(user)){
-            mUser=user;
-        }
+
+        mUser = user;
+
         String userid = (String) SPUtils.get(getThisContext(), BaseConfig.USERID, "");
-        if(!TextUtils.isEmpty(userid)){
-            mUserId=userid;
-        }
+
+        mUserId = userid;
+
     }
 
 
@@ -100,9 +100,10 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(getLayoutResId(), container, false);
-        unbinder= ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -120,7 +121,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
                 while (iterator.hasNext()) {
                     String next = iterator.next();
                     Object object = eventData.get(next);
-                    refreshData(next,object);
+                    refreshData(next, object);
                 }
                 break;
             case EventCallBackBean.CLOSE:
@@ -130,7 +131,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
                 while (iterator.hasNext()) {
                     String next = iterator.next();
                     Object object = eventData.get(next);
-                    withData(next,object);
+                    withData(next, object);
                 }
                 break;
             default:
@@ -140,15 +141,17 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
 
     /**
      * 建造presenter对象
+     *
      * @param presenter
      */
-    protected   void buildPresenter(MVPBasePresenter presenter){
+    protected void buildPresenter(MVPBasePresenter presenter) {
         presenter.attachView(this);
         buildPresenter.add(presenter);
     }
 
     /**
      * 创建Presenter
+     *
      * @return
      */
     protected abstract P createPresenter();
@@ -171,6 +174,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
      * @return
      */
     protected abstract void refreshData(String key, Object object);
+
     /**
      * 加载数据
      *
@@ -182,6 +186,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
      * 实现功能，填充数据
      */
     protected abstract void initDatas();
+
     /**
      * 获取context
      *
@@ -190,6 +195,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
     public Context getThisContext() {
         return getActivity();
     }
+
     /**
      * 关闭Fragment
      */
@@ -205,15 +211,16 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
         unbinder.unbind();
         if (mPresenter != null) {
             mPresenter.detachView();
-            if(buildPresenter!=null&&buildPresenter.size()!=0){
-                for (int i=0;i<buildPresenter.size();i++){
+            if (buildPresenter != null && buildPresenter.size() != 0) {
+                for (int i = 0; i < buildPresenter.size(); i++) {
                     MVPBasePresenter mvpBasePresenter = buildPresenter.get(i);
                     mvpBasePresenter.detachView();
                 }
-                buildPresenter=null;
+                buildPresenter = null;
             }
         }
     }
+
     /**
      * 根据String获取参数
      *
