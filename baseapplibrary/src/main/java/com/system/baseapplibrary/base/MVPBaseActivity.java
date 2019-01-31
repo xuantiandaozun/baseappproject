@@ -131,7 +131,7 @@ public abstract class MVPBaseActivity <P extends MVPBasePresenter> extends Suppo
      * @param presenter
      * @param <b>
      */
-    private <b extends MVPBasePresenter> void buildPresenter(b presenter){
+    protected <b extends MVPBasePresenter> void buildPresenter(b presenter){
         presenter.attachView(this);
         buildPresenter.addAll((Collection<? extends MVPBasePresenter>) presenter);
     }
