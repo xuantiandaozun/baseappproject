@@ -141,11 +141,10 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
     /**
      * 建造presenter对象
      * @param presenter
-     * @param <b>
      */
-    protected  <b extends MVPBasePresenter> void buildPresenter(b presenter){
+    protected   void buildPresenter(MVPBasePresenter presenter){
         presenter.attachView(this);
-        buildPresenter.addAll((Collection<? extends MVPBasePresenter>) presenter);
+        buildPresenter.add(presenter);
     }
 
     /**
