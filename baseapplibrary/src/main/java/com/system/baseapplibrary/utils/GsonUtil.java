@@ -3,6 +3,8 @@ package com.system.baseapplibrary.utils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
@@ -63,35 +65,48 @@ public class GsonUtil {
         }
         return t;
     }
-
     /**
      * 转成list
      *
-     * @param gsonString
-     * @param cls
      * @return
      */
-    public static <T> List<T> GsonToList(String gsonString, Class<T> cls) {
-        List<T> list = null;
-        if (gson != null) {
-            list = gson.fromJson(gsonString, new TypeToken<T>() {
-            }.getType());
-        }
+    public <T> List<T> GsonToList(String json,Class clazz) {
+        Type type = new ParameterizedTypeImpl(clazz);
+        List<T> list =  new Gson().fromJson(json, type);
         return list;
     }
     /**
      * 转成list
      *
-     * @param object
      * @return
      */
-    public static <T> T GsonToList(Object object) {
-        T list = null;
-        if (gson != null) {
-            list = gson.fromJson(GsonString(object), new TypeToken<List<T>>() {
-            }.getType());
-        }
+    public <T> List<T> GsonToList(Object object,Class clazz) {
+        Type type = new ParameterizedTypeImpl(clazz);
+        List<T> list =  new Gson().fromJson(GsonString(object), type);
         return list;
+    }
+
+    private  class ParameterizedTypeImpl implements ParameterizedType {
+        Class clazz;
+
+        public ParameterizedTypeImpl(Class clz) {
+            clazz = clz;
+        }
+
+        @Override
+        public Type[] getActualTypeArguments() {
+            return new Type[]{clazz};
+        }
+
+        @Override
+        public Type getRawType() {
+            return List.class;
+        }
+
+        @Override
+        public Type getOwnerType() {
+            return null;
+        }
     }
 
     /**
