@@ -70,7 +70,7 @@ public class GsonUtil {
      *
      * @return
      */
-    public <T> List<T> GsonToList(String json,Class clazz) {
+    public static <T> List<T> GsonToList(String json,Class clazz) {
         Type type = new ParameterizedTypeImpl(clazz);
         List<T> list =  new Gson().fromJson(json, type);
         return list;
@@ -80,13 +80,13 @@ public class GsonUtil {
      *
      * @return
      */
-    public <T> List<T> GsonToList(Object object,Class clazz) {
+    public static <T> List<T> GsonToList(Object object,Class clazz) {
         Type type = new ParameterizedTypeImpl(clazz);
         List<T> list =  new Gson().fromJson(GsonString(object), type);
         return list;
     }
 
-    private  class ParameterizedTypeImpl implements ParameterizedType {
+    private  static class ParameterizedTypeImpl implements ParameterizedType {
         Class clazz;
 
         public ParameterizedTypeImpl(Class clz) {
