@@ -8,6 +8,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.orhanobut.logger.Logger;
+import com.system.baseapplibrary.BaseMainApp;
 import com.system.baseapplibrary.utils.ToastUtil;
 
 
@@ -42,7 +43,11 @@ public  class OnRequestCallback<T> implements Observer<T> {
     public void onNext(T t) {
         String s = new Gson().toJson(t);
         if(s.contains("登录过期")){
-            ToastUtil.showSnack("登录过期");
+           // ToastUtil.showSnack("登录过期");
+            Intent intent = new Intent("com.system.main");
+            intent.putExtra("name","logout");
+           // ToastUtil.showSnack("登录过期");
+            BaseMainApp.getContext().sendBroadcast(intent);
         }else {
             listener.onSuccess(t);
         }
