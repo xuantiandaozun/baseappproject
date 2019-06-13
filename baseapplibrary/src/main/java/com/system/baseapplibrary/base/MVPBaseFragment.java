@@ -48,7 +48,7 @@ public abstract class MVPBaseFragment<P extends MVPBasePresenter> extends Suppor
     public String mtoken;
     public String mUser;
     public String mUserId;
-    private List<MVPBasePresenter> buildPresenter;
+    protected List<MVPBasePresenter> buildPresenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

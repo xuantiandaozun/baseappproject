@@ -41,7 +41,7 @@ public abstract class MVPBaseActivity<P extends MVPBasePresenter> extends Suppor
     public String mtoken;
     public String mUser;
     public String mUserId;
-    private List<MVPBasePresenter> buildPresenter;
+    protected List<MVPBasePresenter> buildPresenter;
 
 
     @Override
