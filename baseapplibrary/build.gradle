@@ -11,8 +11,8 @@ ext {
     libs=[
             multidex                : "1.0.3",
             supportVersion          : "28.0.0",
-            butterknifecompiler     : "8.8.1",
-            butterknife             : "8.8.1",
+            butterknifecompiler     : "10.0.0",
+            butterknife             : "10.0.0",
             gson                    : "2.8.2",
             glide                   : "3.8.0",
             fragmentation           : "1.3.6",
